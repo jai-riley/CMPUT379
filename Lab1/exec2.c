@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
 
     int pid;
-    char *argvv[]={"ls", "-al", NULL};
+    char *argvv[]={"echo", "-al", NULL};
     char *env[]={NULL};
 
     if ((pid = fork()) ==-1)
@@ -15,14 +15,14 @@ int main(int argc, char *argv[]) {
     }
     else if (pid == 0)
     {
-        if (execve("/bin/ls", argvv, env) == -1){
+        if (execve("/bin/echo", argvv, env) == -1){
             perror("execve");
         }
     }
-    else
+    /*else
     {
        wait(NULL);
-    }
+    }*/
 
     return 0;
 }
